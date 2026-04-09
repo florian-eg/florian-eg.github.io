@@ -132,6 +132,46 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
+  .countdown {
+  margin-bottom: 2rem;
+}
+.countdown-label {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+.countdown-boxes {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.countdown-box {
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: 4px;
+  padding: 0.8rem 1rem;
+  min-width: 70px;
+  text-align: center;
+}
+.countdown-box .number {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.countdown-box .unit {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.3rem;
+  opacity: 0.7;
+}
+.countdown-released {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--accent);
+  font-weight: 700;
+}
   .newsletter {
   max-width: 500px;
   margin: 0 auto;
@@ -206,6 +246,7 @@
     <div class="detail-info">
       <h2 id="detail-title"></h2>
       <div class="genre" id="detail-genre"></div>
+      <div class="countdown" id="detail-countdown"></div>
       <p class="description" id="detail-description"></p>
       <h3 class="buy-heading">Available at</h3>
       <div class="buy-links" id="detail-buy-links"></div>
@@ -231,6 +272,7 @@
       id: "lifestock",
       title: "Lifestock",
       genre: "Fiction",
+      releaseDate: "2026-05-10T00:00:00"
       cover: "./covers/lifestock.jpg",
       placeholderColor: "#0d1b2a",
       description: "Aboard the interstellar vessel Oikos 5, a civilisation is crossing the dark toward a new world. Noah has been alive for centuries — the ship's historian, ancient and quietly burdened, who knows exactly how the system works and what it requires of him. Lillie is a teacher in the lower colonies, nine months pregnant, who has just been escorted into a part of the ship she was never meant to see. These two people will never meet. What connects them is a truth that one of them has spent centuries living with, and the other is not permitted to know. Told in two voices moving toward the same moment from opposite ends of the same ship, Lifestock is a novel about complicity and innocence, about what survival costs and who is made to pay for it, and about the lives that continue — quietly, stubbornly, with love — inside systems that were never designed with them in mind.",
@@ -258,6 +300,16 @@
     if (!book) return;
     document.getElementById('detail-title').textContent = book.title;
     document.getElementById('detail-genre').textContent = book.genre;
+    document.getElementById('detail-genre').textContent = book.genre;
+
+// Countdown timer
+if (book.releaseDate) {
+  startCountdown(book.releaseDate);
+} else {
+  document.getElementById('detail-countdown').innerHTML = '';
+}
+
+document.getElementById('detail-description').textContent = book.description;
     document.getElementById('detail-description').textContent = book.description;
     const coverEl = document.getElementById('detail-cover');
     coverEl.innerHTML = book.cover
@@ -271,6 +323,35 @@
     document.getElementById('book-page').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+  let countdownInterval = null;
+function startCountdown(dateStr) {
+  if (countdownInterval) clearInterval(countdownInterval);
+  const container = document.getElementById('detail-countdown');
+  const target = new Date(dateStr).getTime();
+  function update() {
+    const now = Date.now();
+    const diff = target - now;
+    if (diff <= 0) {
+      container.innerHTML = '<p class="countdown-released">Available Now!</p>';
+      clearInterval(countdownInterval);
+      return;
+    }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+    container.innerHTML = `
+      <h3 class="countdown-label">Releases in</h3>
+      <div class="countdown-boxes">
+        <div class="countdown-box"><div class="number">${days}</div><div class="unit">Days</div></div>
+        <div class="countdown-box"><div class="number">${hours}</div><div class="unit">Hours</div></div>
+        <div class="countdown-box"><div class="number">${mins}</div><div class="unit">Min</div></div>
+        <div class="countdown-box"><div class="number">${secs}</div><div class="unit">Sec</div></div>
+      </div>`;
+  }
+  update();
+  countdownInterval = setInterval(update, 1000);
+}
   function showHome() {
     document.getElementById('book-page').style.display = 'none';
     document.getElementById('home').style.display = 'block';
