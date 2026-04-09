@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GG9DW694C0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-GG9DW694C0');
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Florian Egger — Books</title>
@@ -250,6 +243,37 @@
 .newsletter-form button:hover {
   background: var(--accent);
 }
+    .cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  z-index: 1000;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+}
+.cookie-banner a { color: var(--accent); }
+.cookie-banner button {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 3px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.cookie-banner .accept { background: var(--accent); color: var(--cream); }
+.cookie-banner .decline { background: transparent; color: var(--cream); border: 1px solid var(--muted); }
+.cookie-banner button:hover { opacity: 0.85; }
   footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; letter-spacing: 0.03em; }
 </style>
 </head>
@@ -291,7 +315,7 @@
     </form>
   </div>
 </section>
-<footer>&copy; 2026 Florian Egger. All rights reserved.</footer>
+<footer>&copy; 2026 Florian Egger. All rights reserved. · <a href="./privacy.html" style="color:var(--muted);">Privacy Policy</a></footer>
 <script>
   const books = [
     {
@@ -382,6 +406,40 @@ function startCountdown(dateStr) {
     document.getElementById('book-page').style.display = 'none';
     document.getElementById('home').style.display = 'block';
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+    <div class="cookie-banner" id="cookie-banner" style="display:none;">
+  <p>This site uses cookies for analytics. <a href="./privacy.html">Learn more</a></p>
+  <button class="accept" onclick="acceptCookies()">Accept</button>
+  <button class="decline" onclick="declineCookies()">Decline</button>
+</div>
+<script>
+  (function() {
+    var consent = localStorage.getItem('cookie-consent');
+    if (consent === null) {
+      document.getElementById('cookie-banner').style.display = 'flex';
+    } else if (consent === 'accepted') {
+      loadAnalytics();
+    }
+  })();
+  function acceptCookies() {
+    localStorage.setItem('cookie-consent', 'accepted');
+    document.getElementById('cookie-banner').style.display = 'none';
+    loadAnalytics();
+  }
+  function declineCookies() {
+    localStorage.setItem('cookie-consent', 'declined');
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+  function loadAnalytics() {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-GG9DW694C0';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GG9DW694C0');
   }
 </script>
 </body>
