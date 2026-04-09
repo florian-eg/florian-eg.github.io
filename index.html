@@ -132,6 +132,58 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
+  .newsletter {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 3rem 2rem 4rem;
+  text-align: center;
+}
+.newsletter h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+.newsletter p {
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+.newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.newsletter-form input {
+  flex: 1;
+  max-width: 300px;
+  padding: 0.7rem 1rem;
+  border: 2px solid var(--parchment);
+  border-radius: 3px;
+  background: #fff;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.newsletter-form input:focus {
+  border-color: var(--accent);
+}
+.newsletter-form button {
+  padding: 0.7rem 1.5rem;
+  background: var(--ink);
+  color: var(--cream);
+  border: none;
+  border-radius: 3px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.newsletter-form button:hover {
+  background: var(--accent);
+}
   footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; letter-spacing: 0.03em; }
 </style>
 </head>
@@ -158,6 +210,18 @@
       <h3 class="buy-heading">Available at</h3>
       <div class="buy-links" id="detail-buy-links"></div>
     </div>
+  </div>
+</section>
+  <section class="newsletter">
+  <h2>Stay Updated</h2>
+  <p>Sign up to receive news about upcoming releases and events.</p>
+  <div class="newsletter-form">
+    <form action="https://github.us12.list-manage.com/subscribe/post?u=17114583e7543d649c175efc9&id=5a11d2b25f&f_id=00b7c2e1f0" method="post" target="_blank">
+      <div style="display:flex;gap:0.5rem;justify-content:center;">
+        <input type="email" name="EMAIL" id="email-input" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </div>
+    </form>
   </div>
 </section>
 <footer>&copy; 2026 Florian Egger. All rights reserved.</footer>
