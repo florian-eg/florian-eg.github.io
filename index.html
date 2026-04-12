@@ -361,7 +361,6 @@
     if (!book) return;
     document.getElementById('detail-title').textContent = book.title;
     document.getElementById('detail-genre').textContent = book.genre;
-    document.getElementById('detail-genre').textContent = book.genre;
 
 // Countdown timer
 if (book.releaseDate) {
@@ -370,7 +369,6 @@ if (book.releaseDate) {
   document.getElementById('detail-countdown').innerHTML = '';
 }
 
-document.getElementById('detail-description').textContent = book.description;
     document.getElementById('detail-description').textContent = book.description;
     const coverEl = document.getElementById('detail-cover');
     coverEl.innerHTML = book.cover
