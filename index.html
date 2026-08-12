@@ -4,452 +4,125 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Florian Egger — Books</title>
-<meta name="description" content="A personal collection of my books, stories, and written work. Browse, read, and enjoy.">
+<meta name="description" content="Science fiction by Florian Egger. Lifestock, out now; Ashground, coming 2027.">
 <meta name="author" content="Florian Egger">
-
-<!-- Open Graph (social media preview) -->
 <meta property="og:title" content="Florian Egger — Books">
-<meta property="og:description" content="A personal collection of my books, stories, and written work. Browse, read, and enjoy.">
+<meta property="og:description" content="Science fiction by Florian Egger. Lifestock, out now; Ashground, coming 2027.">
 <meta property="og:image" content="https://florian-eg.github.io/covers/lifestock.jpg">
-<meta property="og:url" content="https://florian-eg.github.io">
+<meta property="og:url" content="https://florian-eg.github.io/">
 <meta property="og:type" content="website">
-
-<!-- Twitter card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Florian Egger — Books">
-<meta name="twitter:description" content="A personal collection of my books, stories, and written work. Browse, read, and enjoy.">
+<meta name="twitter:description" content="Science fiction by Florian Egger. Lifestock, out now; Ashground, coming 2027.">
 <meta name="twitter:image" content="https://florian-eg.github.io/covers/lifestock.jpg">
-
-<!-- Favicon -->
+<link rel="canonical" href="https://florian-eg.github.io/">
 <link rel="icon" type="image/x-icon" href="./favicon.ico">
 <link rel="icon" type="image/png" href="./favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
 <style>
-  :root {
-    --ink: #1a1a1a;
-    --cream: #f5f0e8;
-    --parchment: #ebe4d6;
-    --accent: #b44a2f;
-    --accent-hover: #963c26;
-    --muted: #7a7265;
-    --shadow: rgba(26, 26, 26, 0.15);
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Source Sans 3', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 999;
-  }
-  header { text-align: center; padding: 5rem 2rem 3rem; }
-  header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 1.1;
-  }
-  header p {
-    margin-top: 1rem;
-    font-size: 1.1rem;
-    color: var(--muted);
-    font-weight: 300;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-  .divider { width: 60px; height: 3px; background: var(--accent); margin: 2rem auto; border-radius: 2px; }
-  #home { max-width: 1100px; margin: 0 auto; padding: 0 2rem 6rem; }
-  .book-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 2.5rem;
-  }
-  .book-card {
-    cursor: pointer;
-    text-align: center;
-    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    animation: fadeUp 0.5s ease both;
-  }
-  .book-card:hover { transform: translateY(-8px) scale(1.1); }
-  .cover-wrapper {
-    position: relative;
-    aspect-ratio: 2 / 3;
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: 6px 6px 20px var(--shadow), 0 0 0 1px rgba(0,0,0,0.04);
-    transition: box-shadow 0.35s ease;
-  }
-  .book-card:hover .cover-wrapper {
-    box-shadow: 8px 12px 30px rgba(26,26,26,0.22), 0 0 0 1px rgba(0,0,0,0.06);
-  }
-  .cover-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .cover-placeholder {
-    width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
-    padding: 1.5rem;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; font-weight: 700; line-height: 1.3;
-    text-align: center; color: #fff;
-  }
-  .book-card h3 {
-    margin-top: 1rem;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem; font-weight: 700;
-  }
-  #book-page { display: none; max-width: 900px; margin: 0 auto; padding: 2rem 2rem 6rem; }
-  .back-btn {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    background: none; border: none;
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.95rem; color: var(--muted); cursor: pointer;
-    padding: 0.5rem 0; letter-spacing: 0.03em; text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .back-btn:hover { color: var(--ink); }
-  .back-btn svg { width: 18px; height: 18px; }
-  .detail-layout { display: grid; grid-template-columns: 260px 1fr; gap: 3rem; margin-top: 2rem; align-items: start; }
-  @media (max-width: 640px) {
-    .detail-layout { grid-template-columns: 1fr; gap: 2rem; justify-items: center; }
-    .detail-layout .cover-wrapper { width: 200px; }
-  }
-  .detail-layout .cover-wrapper {
-    aspect-ratio: 2 / 3; border-radius: 4px; overflow: hidden;
-    box-shadow: 8px 10px 30px var(--shadow);
-  }
-  .detail-info h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 4vw, 2.4rem); line-height: 1.2; margin-bottom: 0.3rem;
-  }
-  .detail-info .genre {
-    color: var(--muted); font-size: 0.9rem; letter-spacing: 0.06em;
-    text-transform: uppercase; font-weight: 600; margin-bottom: 1.5rem;
-  }
-  .detail-info .description {
-    font-size: 1.05rem; line-height: 1.75; color: #3a3630;
-    margin-bottom: 2rem; font-weight: 300;
-  }
-  .buy-heading { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 0.8rem; }
-  .buy-links { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-  .buy-links a {
-    display: inline-block; padding: 0.6rem 1.3rem;
-    background: var(--ink); color: var(--cream); text-decoration: none;
-    font-size: 0.9rem; font-weight: 600; letter-spacing: 0.03em;
-    border-radius: 3px; transition: background 0.2s, transform 0.2s;
-  }
-  .buy-links a:hover { background: var(--accent); transform: translateY(-2px); }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .countdown {
-  margin-bottom: 2rem;
-}
-.countdown-label {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
-  margin-bottom: 0.8rem;
-}
-.countdown-boxes {
-  display: flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-}
-.countdown-box {
-  background: var(--ink);
-  color: var(--cream);
-  border-radius: 4px;
-  padding: 0.8rem 1rem;
-  min-width: 70px;
-  text-align: center;
-}
-.countdown-box .number {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  font-weight: 700;
-  line-height: 1;
-}
-.countdown-box .unit {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-top: 0.3rem;
-  opacity: 0.7;
-}
-.countdown-released {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  color: var(--accent);
-  font-weight: 700;
-}
-  .newsletter {
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 3rem 2rem 4rem;
-  text-align: center;
-}
-.newsletter h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
-}
-.newsletter p {
-  color: var(--muted);
-  font-weight: 300;
-  margin-bottom: 1.5rem;
-}
-.newsletter-form {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-}
-.newsletter-form input {
-  flex: 1;
-  max-width: 300px;
-  padding: 0.7rem 1rem;
-  border: 2px solid var(--parchment);
-  border-radius: 3px;
-  background: #fff;
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 0.95rem;
-  color: var(--ink);
-  outline: none;
-  transition: border-color 0.2s;
-}
-.newsletter-form input:focus {
-  border-color: var(--accent);
-}
-.newsletter-form button {
-  padding: 0.7rem 1.5rem;
-  background: var(--ink);
-  color: var(--cream);
-  border: none;
-  border-radius: 3px;
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.newsletter-form button:hover {
-  background: var(--accent);
-}
-    .cookie-banner {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--ink);
-  color: var(--cream);
-  padding: 1rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  z-index: 1000;
-  font-size: 0.9rem;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
-}
-.cookie-banner a { color: var(--accent); }
-.cookie-banner button {
-  padding: 0.5rem 1.2rem;
-  border: none;
-  border-radius: 3px;
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-.cookie-banner .accept { background: var(--accent); color: var(--cream); }
-.cookie-banner .decline { background: transparent; color: var(--cream); border: 1px solid var(--muted); }
-.cookie-banner button:hover { opacity: 0.85; }
-  footer { text-align: center; padding: 2rem; color: var(--muted); font-size: 0.85rem; letter-spacing: 0.03em; }
+  body { margin: 0; background: var(--color-bg); }
+  a:hover { color: var(--color-accent-700); }
+  @keyframes ashDrift { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(0,-24px,0) scale(1.08); } }
 </style>
 </head>
 <body>
-<header>
-  <h1>My Books</h1>
-  <p>Florian Egger</p>
-  <div class="divider"></div>
-</header>
-<section id="home">
-  <div class="book-grid" id="book-grid"></div>
-</section>
-<section id="book-page">
-  <button class="back-btn" onclick="showHome()">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-    All Books
-  </button>
-  <div class="detail-layout">
-    <div class="cover-wrapper" id="detail-cover"></div>
-    <div class="detail-info">
-      <h2 id="detail-title"></h2>
-      <div class="genre" id="detail-genre"></div>
-      <div class="countdown" id="detail-countdown"></div>
-      <p class="description" id="detail-description"></p>
-      <h3 class="buy-heading">Available at</h3>
-      <div class="buy-links" id="detail-buy-links"></div>
-    </div>
-  </div>
-</section>
-  <section class="newsletter">
-  <h2>Stay Updated</h2>
-  <p>Sign up to receive news about upcoming releases and events.</p>
-  <div class="newsletter-form">
-    <form action="https://github.us12.list-manage.com/subscribe/post?u=17114583e7543d649c175efc9&id=5a11d2b25f&f_id=00b7c2e1f0" method="post" target="_blank">
-      <div style="display:flex;gap:0.5rem;justify-content:center;">
-        <input type="email" name="EMAIL" id="email-input" placeholder="Your email address" required>
-        <button type="submit">Subscribe</button>
+<div style="min-height: 100vh; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); overflow-x: hidden;">
+  <nav class="nav" style="max-width: 1120px; margin: 0 auto; padding: 26px 32px; gap: 28px;">
+    <a class="nav-brand" href="index.html" style="font-size: 22px; text-decoration: none; color: var(--color-text);">Florian Egger</a>
+    <a href="index.html" aria-current="page" style="font-size: 15px;">Books</a>
+    <a href="ashground.html" style="font-size: 15px;">Ashground</a>
+    <a href="about.html" style="font-size: 15px;">About</a>
+    <a class="btn btn-primary" href="#newsletter" style="font-size: 14px;">Get release news</a>
+  </nav>
+
+  <header style="max-width: 1120px; margin: 0 auto; padding: 56px 32px 88px; position: relative;">
+    <div style="position: absolute; top: -40px; right: -80px; width: 420px; height: 420px; border-radius: 50%; background: var(--color-accent-2-200); opacity: 0.55; pointer-events: none;"></div>
+    <div style="position: relative; max-width: 780px;">
+      <span class="tag tag-accent-2" style="font-size: 12px;">Science fiction</span>
+      <h1 style="margin: 20px 0 0; font-size: clamp(46px, 7vw, 88px); line-height: 1.02;">Every system needs someone to pay for it.</h1>
+      <p style="margin: 26px 0 0; font-size: 20px; line-height: 1.6; max-width: 620px; color: var(--color-neutral-800); text-wrap: pretty;">Two novels about people inside machinery larger than themselves — one crossing the dark aboard a ship that has already decided their worth, one stranded on a planet that wants him dead.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px;">
+        <a class="btn btn-primary" href="ashground.html" style="font-size: 15px; padding: 13px 24px;">Ashground — coming 2027</a>
+        <a class="btn btn-secondary" href="lifestock.html" style="font-size: 15px; padding: 13px 24px;">Read about Lifestock</a>
       </div>
+    </div>
+  </header>
+
+  <section style="max-width: 1120px; margin: 0 auto; padding: 0 32px 96px;">
+    <h2 style="font-size: 34px; margin: 0 0 8px;">The books</h2>
+    <p class="text-muted" style="margin: 0 0 40px; font-size: 15px;">Two of them. One you can read tonight.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;">
+      <a href="lifestock.html" style="display: grid; grid-template-columns: 168px 1fr; gap: 26px; align-items: start; text-decoration: none; color: inherit; background: var(--color-surface); border-radius: 34px; padding: 26px; box-shadow: var(--shadow-sm);">
+        <div style="aspect-ratio: 2 / 3; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-md);">
+          <img class="washed" src="covers/lifestock.jpg" alt="Lifestock cover" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div>
+          <span class="tag tag-neutral">Out now</span>
+          <h3 style="margin: 14px 0 8px; font-size: 30px;">Lifestock</h3>
+          <p style="margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--color-neutral-800);">Two voices moving toward the same moment from opposite ends of the same ship.</p>
+          <span style="color: var(--color-accent-700); font-weight: 600; font-size: 14px;">Read more →</span>
+        </div>
+      </a>
+      <a href="ashground.html" style="display: grid; grid-template-columns: 168px 1fr; gap: 26px; align-items: start; text-decoration: none; color: inherit; background: var(--color-neutral-900); border-radius: 34px; padding: 26px; box-shadow: var(--shadow-md);">
+        <div style="position: relative; aspect-ratio: 2 / 3; border-radius: 20px; overflow: hidden; background: #16150f; display: grid; place-items: center; text-align: center; padding: 16px;">
+          <div style="position: absolute; width: 150px; height: 150px; border-radius: 50%; background: var(--color-accent-800); filter: blur(28px); opacity: 0.85;"></div>
+          <div style="position: relative; font-family: var(--font-heading); color: var(--color-accent-300); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.5;">Cover<br>withheld</div>
+        </div>
+        <div>
+          <span class="tag" style="background: var(--color-accent-800); color: var(--color-accent-200);">Coming 2027</span>
+          <h3 style="margin: 14px 0 8px; font-size: 30px; color: var(--color-neutral-100);">Ashground</h3>
+          <p style="margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--color-neutral-300);">A soldier gave up his empathy to be perfect. Then the ship went down.</p>
+          <span style="color: var(--color-accent-300); font-weight: 600; font-size: 14px;">See the first look →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section style="background: var(--color-accent-2-200); padding: 88px 32px;">
+    <div style="max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 48px; align-items: center;">
+      <div>
+        <h2 style="margin: 0 0 14px; font-size: 34px;">The next one is called Ashground.</h2>
+        <p style="margin: 0 0 22px; font-size: 17px; line-height: 1.65; color: var(--color-accent-2-900); max-width: 46ch; text-wrap: pretty;">Captain Sorin traded his empathy for precision. Alone on a hostile planet, cut off from the army that built him, precision is not going to be enough.</p>
+        <a class="btn btn-primary" href="ashground.html" style="font-size: 15px; padding: 13px 24px;">Ashground — coming 2027</a>
+      </div>
+      <blockquote style="margin: 0; font-family: var(--font-heading); font-size: 26px; line-height: 1.3; color: var(--color-accent-2-900);">“A war story that becomes a survival story, and beneath that, a story about who’s left once the system that made you is gone.”</blockquote>
+    </div>
+  </section>
+
+  <section id="newsletter" style="max-width: 640px; margin: 0 auto; padding: 88px 32px;">
+    <h2 style="margin: 0 0 10px; font-size: 34px;">Know first.</h2>
+    <p class="text-muted" style="margin: 0 0 24px; font-size: 16px;">Release dates, the Ashground cover reveal, and the occasional early chapter. Nothing else.</p>
+    <form action="https://github.us12.list-manage.com/subscribe/post?u=17114583e7543d649c175efc9&id=5a11d2b25f&f_id=00b7c2e1f0" method="post" target="_blank" style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <input class="input" type="email" name="EMAIL" placeholder="you@email.com" required style="flex: 1; min-width: 220px; min-height: 46px; background: var(--color-neutral-100);">
+      <button class="btn btn-primary" type="submit" style="font-size: 15px; padding: 13px 26px;">Subscribe</button>
     </form>
-  </div>
-</section>
-<footer>
-  <div style="margin-bottom:0.8rem;display:flex;gap:1rem;justify-content:center;">
-    <a href="https://www.tiktok.com/@florian.press" target="_blank" rel="noopener" style="color:var(--muted);transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'" aria-label="TikTok">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.3 0 .59.04.86.11V9a6.27 6.27 0 0 0-.86-.06 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 4.76 1.52V6.84a4.84 4.84 0 0 1-1-.15z"/></svg>
-    </a>
-    <a href="https://amazon.com/author/florianegger" target="_blank" rel="noopener" style="color:var(--muted);transition:color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'" aria-label="Amazon">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M13.96 11.44c0 .63-.01 1.16-.04 1.58-.03.42-.1.78-.23 1.07-.12.29-.29.5-.52.65-.22.14-.52.22-.89.22-.24 0-.46-.05-.66-.14a1.27 1.27 0 0 1-.5-.42 2.1 2.1 0 0 1-.31-.7c-.07-.29-.11-.63-.11-1.02 0-.76.14-1.33.43-1.7.29-.38.71-.63 1.27-.76l1.56-.4v1.62zm3.48 4.26a.44.44 0 0 1-.13.38c-.47.42-1.32 1.2-1.78 1.64l-.02.01a.53.53 0 0 1-.31.11.5.5 0 0 1-.23-.08c-.31-.26-.37-.38-.54-.63-.52.53-1.07.88-1.83 1.07-.22.05-.47.08-.74.08-1.83 0-2.9-1.13-2.9-2.82 0-.75.2-1.37.57-1.86a4.2 4.2 0 0 1 1.56-1.18c.65-.3 1.42-.52 2.3-.67.3-.05.63-.1.96-.15v-.36c0-.34-.02-.65-.07-.92a1.52 1.52 0 0 0-.27-.66 1.11 1.11 0 0 0-.54-.39c-.23-.09-.53-.13-.9-.13-.31 0-.64.04-.96.12-.32.08-.61.24-.88.47-.1.1-.17.24-.22.43a1.6 1.6 0 0 1-.13.41.62.62 0 0 1-.55.24l-1.19-.16a.52.52 0 0 1-.45-.55c0-.17.06-.37.17-.6.12-.24.31-.47.58-.7.28-.24.64-.44 1.09-.6.45-.17 1-.25 1.64-.25.63 0 1.16.07 1.58.2.43.14.78.35 1.04.63.27.28.46.64.56 1.07.1.43.16.94.16 1.52v4.04c0 .58.24 1.12.67 1.5zM21.77 17.39c-.11-.09-.27-.1-.4-.02-1.13.94-2.64 1.52-3.99 1.52-.99 0-1.9-.2-2.7-.59-.08-.04-.17-.04-.24 0-.04.02-.08.06-.1.1-.19.37.2.84.37.96 1.03.79 2.27 1.26 3.56 1.26 1.09 0 2.33-.42 3.22-1.28.14-.14.19-.35.09-.52a.37.37 0 0 0-.1-.1l.29-.33zM22.75 16.63c-.26-.33-1.71-.4-2.36-.33-.2.02-.23.19-.05.35.58.4 1.52.58 2.05.49.53-.1.63-.37.36-.51zM1.08 17.3C3.6 19.7 7.35 21 10.6 21c2.2 0 4.72-.51 6.99-1.57.43-.2.8-.44.36-.92-.44-.48-1.82-.22-2.51-.11-2.4.38-4.87.47-7.23-.26-1.16-.36-2.24-.93-3.18-1.66-.14-.11-.12-.27.04-.24z"/></svg>
-    </a>
-  </div>
-  &copy; 2026 Florian Egger. All rights reserved. · <a href="./privacy.html" style="color:var(--muted);">Privacy Policy</a>
-</footer>
-<script>
-  const books = [
-    {
-      id: "lifestock",
-      title: "Lifestock",
-      genre: "Fiction",
-      releaseDate: "2026-05-10T00:00:00",
-      cover: "./covers/lifestock.jpg",
-      placeholderColor: "#0d1b2a",
-      description: "Aboard the interstellar vessel Oikos 5, a civilisation is crossing the dark toward a new world. Noah has been alive for centuries — the ship's historian, ancient and quietly burdened, who knows exactly how the system works and what it requires of him. Lillie is a teacher in the lower colonies, nine months pregnant, who has just been escorted into a part of the ship she was never meant to see. These two people will never meet. What connects them is a truth that one of them has spent centuries living with, and the other is not permitted to know. Told in two voices moving toward the same moment from opposite ends of the same ship, Lifestock is a novel about complicity and innocence, about what survival costs and who is made to pay for it, and about the lives that continue — quietly, stubbornly, with love — inside systems that were never designed with them in mind.",
-      buyLinks: [
-        { name: "Amazon", url: "https://www.amazon.com/dp/B0GXSJ7RB9" },
-        { name: "Kindle", url: "https://www.amazon.com/dp/B0F5DS9R1J/ref=sr_1_1?crid=WTCGTT39CCRV&dib=eyJ2IjoiMSJ9.gq95GAUAF71hnk8Ze-7EP9FF4PNpcl-bJp7k7P3q9a9g3fFMFX_pFFPCJyUurd7As_REkEI64-VEoX4ZyBDD_w.V4Jejc5CUueAMVavJL0QNcP-ZE0txfeOXP1331UmdrY&dib_tag=se&keywords=lifestock&qid=1775814851&s=books&sprefix=lifestock%2Cstripbooks-intl-ship%2C211&sr=1-1" },
-      ]
-    },
-  ];
-  const grid = document.getElementById('book-grid');
-  books.forEach(book => {
-    const card = document.createElement('div');
-    card.className = 'book-card';
-    card.onclick = () => showBook(book.id);
-    const coverContent = book.cover
-      ? `<img src="${book.cover}" alt="${book.title} cover">`
-      : `<div class="cover-placeholder" style="background:${book.placeholderColor}">${book.title}</div>`;
-    card.innerHTML = `
-      <div class="cover-wrapper">${coverContent}</div>
-      <h3>${book.title}</h3>
-    `;
-    grid.appendChild(card);
-  });
-  function showBook(id) {
-    const book = books.find(b => b.id === id);
-    if (!book) return;
-    document.getElementById('detail-title').textContent = book.title;
-    document.getElementById('detail-genre').textContent = book.genre;
+  </section>
 
-// Countdown timer
-if (book.releaseDate) {
-  startCountdown(book.releaseDate);
-} else {
-  document.getElementById('detail-countdown').innerHTML = '';
-}
+  <footer style="border-top: 1px solid var(--color-divider); padding: 40px 32px 56px;">
+    <div style="max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between;">
+      <div style="display: flex; gap: 14px; align-items: center;">
+        <a href="https://www.tiktok.com/@florian.press" target="_blank" rel="noopener" aria-label="TikTok" class="btn btn-icon btn-secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.3 0 .59.04.86.11V9a6.27 6.27 0 0 0-.86-.06 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 4.76 1.52V6.84a4.84 4.84 0 0 1-1-.15z"></path></svg>
+        </a>
+        <a href="https://amazon.com/author/florianegger" target="_blank" rel="noopener" aria-label="Amazon" class="btn btn-icon btn-secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13.96 11.44c0 .63-.01 1.16-.04 1.58-.03.42-.1.78-.23 1.07-.12.29-.29.5-.52.65-.22.14-.52.22-.89.22-.24 0-.46-.05-.66-.14a1.27 1.27 0 0 1-.5-.42 2.1 2.1 0 0 1-.31-.7c-.07-.29-.11-.63-.11-1.02 0-.76.14-1.33.43-1.7.29-.38.71-.63 1.27-.76l1.56-.4v1.62zm3.48 4.26a.44.44 0 0 1-.13.38c-.47.42-1.32 1.2-1.78 1.64l-.02.01a.53.53 0 0 1-.31.11.5.5 0 0 1-.23-.08c-.31-.26-.37-.38-.54-.63-.52.53-1.07.88-1.83 1.07-.22.05-.47.08-.74.08-1.83 0-2.9-1.13-2.9-2.82 0-.75.2-1.37.57-1.86a4.2 4.2 0 0 1 1.56-1.18c.65-.3 1.42-.52 2.3-.67.3-.05.63-.1.96-.15v-.36c0-.34-.02-.65-.07-.92a1.52 1.52 0 0 0-.27-.66 1.11 1.11 0 0 0-.54-.39c-.23-.09-.53-.13-.9-.13-.31 0-.64.04-.96.12-.32.08-.61.24-.88.47-.1.1-.17.24-.22.43a1.6 1.6 0 0 1-.13.41.62.62 0 0 1-.55.24l-1.19-.16a.52.52 0 0 1-.45-.55c0-.17.06-.37.17-.6.12-.24.31-.47.58-.7.28-.24.64-.44 1.09-.6.45-.17 1-.25 1.64-.25.63 0 1.16.07 1.58.2.43.14.78.35 1.04.63.27.28.46.64.56 1.07.1.43.16.94.16 1.52v4.04c0 .58.24 1.12.67 1.5zM21.77 17.39c-.11-.09-.27-.1-.4-.02-1.13.94-2.64 1.52-3.99 1.52-.99 0-1.9-.2-2.7-.59-.08-.04-.17-.04-.24 0-.04.02-.08.06-.1.1-.19.37.2.84.37.96 1.03.79 2.27 1.26 3.56 1.26 1.09 0 2.33-.42 3.22-1.28.14-.14.19-.35.09-.52a.37.37 0 0 0-.1-.1l.29-.33zM22.75 16.63c-.26-.33-1.71-.4-2.36-.33-.2.02-.23.19-.05.35.58.4 1.52.58 2.05.49.53-.1.63-.37.36-.51zM1.08 17.3C3.6 19.7 7.35 21 10.6 21c2.2 0 4.72-.51 6.99-1.57.43-.2.8-.44.36-.92-.44-.48-1.82-.22-2.51-.11-2.4.38-4.87.47-7.23-.26-1.16-.36-2.24-.93-3.18-1.66-.14-.11-.12-.27.04-.24z"></path></svg>
+        </a>
+      </div>
+      <p class="text-muted" style="margin: 0; font-size: 13px;">© 2026 Florian Egger · <a href="privacy.html">Privacy Policy</a></p>
+    </div>
+  </footer>
+</div>
 
-    document.getElementById('detail-description').textContent = book.description;
-    const coverEl = document.getElementById('detail-cover');
-    coverEl.innerHTML = book.cover
-      ? `<img src="${book.cover}" alt="${book.title} cover">`
-      : `<div class="cover-placeholder" style="background:${book.placeholderColor}">${book.title}</div>`;
-    const linksEl = document.getElementById('detail-buy-links');
-    linksEl.innerHTML = book.buyLinks
-      .map(l => `<a href="${l.url}" target="_blank" rel="noopener">${l.name}</a>`)
-      .join('');
-    document.getElementById('home').style.display = 'none';
-    document.getElementById('book-page').style.display = 'block';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-  let countdownInterval = null;
-function startCountdown(dateStr) {
-  if (countdownInterval) clearInterval(countdownInterval);
-  const container = document.getElementById('detail-countdown');
-  const target = new Date(dateStr).getTime();
-  function update() {
-    const now = Date.now();
-    const diff = target - now;
-    if (diff <= 0) {
-      container.innerHTML = '<p class="countdown-released">Available Now!</p>';
-      clearInterval(countdownInterval);
-      return;
-    }
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const secs = Math.floor((diff % (1000 * 60)) / 1000);
-    container.innerHTML = `
-      <h3 class="countdown-label">Releases in</h3>
-      <div class="countdown-boxes">
-        <div class="countdown-box"><div class="number">${days}</div><div class="unit">Days</div></div>
-        <div class="countdown-box"><div class="number">${hours}</div><div class="unit">Hours</div></div>
-        <div class="countdown-box"><div class="number">${mins}</div><div class="unit">Min</div></div>
-        <div class="countdown-box"><div class="number">${secs}</div><div class="unit">Sec</div></div>
-      </div>`;
-  }
-  update();
-  countdownInterval = setInterval(update, 1000);
-}
-  function showHome() {
-    document.getElementById('book-page').style.display = 'none';
-    document.getElementById('home').style.display = 'block';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-</script>
-    <div class="cookie-banner" id="cookie-banner" style="display:none;">
-  <p>This site uses cookies for analytics. <a href="./privacy.html">Learn more</a></p>
-  <button class="accept" onclick="acceptCookies()">Accept</button>
-  <button class="decline" onclick="declineCookies()">Decline</button>
+<div class="cookie-banner" id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:1000;background:var(--color-neutral-900);color:var(--color-neutral-100);padding:16px 32px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);">
+  <p style="margin:0;font-size:14px;">This site uses cookies for analytics. <a href="privacy.html" style="color:var(--color-accent-300);">Learn more</a></p>
+  <button class="btn btn-primary" style="font-size:14px;" onclick="acceptCookies()">Accept</button>
+  <button class="btn" style="font-size:14px;border-color:var(--color-neutral-700);color:var(--color-neutral-100);" onclick="declineCookies()">Decline</button>
 </div>
 <script>
-  (function() {
-    var consent = localStorage.getItem('cookie-consent');
-    if (consent === null) {
-      document.getElementById('cookie-banner').style.display = 'flex';
-    } else if (consent === 'accepted') {
-      loadAnalytics();
-    }
-  })();
-  function acceptCookies() {
-    localStorage.setItem('cookie-consent', 'accepted');
-    document.getElementById('cookie-banner').style.display = 'none';
-    loadAnalytics();
-  }
-  function declineCookies() {
-    localStorage.setItem('cookie-consent', 'declined');
-    document.getElementById('cookie-banner').style.display = 'none';
-  }
-  function loadAnalytics() {
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-GG9DW694C0';
-    document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-GG9DW694C0');
-  }
+  (function(){var c=localStorage.getItem('cookie-consent');if(c===null){document.getElementById('cookie-banner').style.display='flex';}else if(c==='accepted'){loadAnalytics();}})();
+  function acceptCookies(){localStorage.setItem('cookie-consent','accepted');document.getElementById('cookie-banner').style.display='none';loadAnalytics();}
+  function declineCookies(){localStorage.setItem('cookie-consent','declined');document.getElementById('cookie-banner').style.display='none';}
+  function loadAnalytics(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-GG9DW694C0';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GG9DW694C0');}
 </script>
 </body>
 </html>

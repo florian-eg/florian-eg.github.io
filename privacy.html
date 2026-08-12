@@ -4,106 +4,96 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy Policy — Florian Egger</title>
+<meta name="description" content="How this site handles analytics, cookies and newsletter data.">
+<meta name="author" content="Florian Egger">
+<meta property="og:title" content="Privacy Policy — Florian Egger">
+<meta property="og:description" content="How this site handles analytics, cookies and newsletter data.">
+<meta property="og:image" content="https://florian-eg.github.io/covers/lifestock.jpg">
+<meta property="og:url" content="https://florian-eg.github.io/privacy.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy Policy — Florian Egger">
+<meta name="twitter:description" content="How this site handles analytics, cookies and newsletter data.">
+<meta name="twitter:image" content="https://florian-eg.github.io/covers/lifestock.jpg">
+<link rel="canonical" href="https://florian-eg.github.io/privacy.html">
 <link rel="icon" type="image/x-icon" href="./favicon.ico">
 <link rel="icon" type="image/png" href="./favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
 <style>
-  :root {
-    --ink: #1a1a1a;
-    --cream: #f5f0e8;
-    --accent: #b44a2f;
-    --muted: #7a7265;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: 'Source Sans 3', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    min-height: 100vh;
-  }
-  .container {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 3rem 2rem 4rem;
-  }
-  .back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    background: none;
-    border: none;
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.95rem;
-    color: var(--muted);
-    cursor: pointer;
-    padding: 0.5rem 0;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .back-btn:hover { color: var(--ink); }
-  .back-btn svg { width: 18px; height: 18px; }
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    margin: 2rem 0 0.5rem;
-  }
-  .last-updated {
-    color: var(--muted);
-    font-size: 0.9rem;
-    margin-bottom: 2rem;
-  }
-  h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    margin: 2rem 0 0.5rem;
-  }
-  p {
-    font-size: 1rem;
-    line-height: 1.75;
-    font-weight: 300;
-    margin-bottom: 1rem;
-  }
-  a { color: var(--accent); }
-  footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--muted);
-    font-size: 0.85rem;
-  }
+  body { margin: 0; background: var(--color-bg); }
+  a:hover { color: var(--color-accent-700); }
+  @keyframes ashDrift { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(0,-24px,0) scale(1.08); } }
 </style>
 </head>
 <body>
-<div class="container">
-  <a class="back-btn" href="./index.html">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-    Back to Books
-  </a>
-  <h1>Privacy Policy</h1>
-  <p class="last-updated">Last updated: April 9, 2026</p>
+<div style="min-height: 100vh; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); overflow-x: hidden;">
+  <nav class="nav" style="max-width: 1120px; margin: 0 auto; padding: 26px 32px; gap: 28px;">
+    <a class="nav-brand" href="index.html" style="font-size: 22px; text-decoration: none; color: var(--color-text);">Florian Egger</a>
+    <a href="index.html" style="font-size: 15px;">Books</a>
+    <a href="ashground.html" style="font-size: 15px;">Ashground</a>
+    <a href="about.html" style="font-size: 15px;">About</a>
+  </nav>
 
-  <h2>Who I Am</h2>
-  <p>This website is operated by Florian Egger. This policy explains how I collect and use information when you visit florian-eg.github.io.</p>
+  <section style="max-width: 720px; margin: 0 auto; padding: 40px 32px 88px;">
+    <a class="btn btn-ghost" href="index.html" style="font-size: 14px; margin-left: -4px;">← Back to books</a>
+    <h1 style="margin: 24px 0 8px; font-size: clamp(40px, 6vw, 60px); line-height: 1.05;">Privacy Policy</h1>
+    <p class="text-muted" style="margin: 0 0 40px; font-size: 14px;">Last updated: April 9, 2026</p>
 
-  <h2>What Data I Collect</h2>
-  <p>I do not collect personal data directly. However, this site uses two third-party services that may collect data on my behalf:</p>
+    <div style="display: grid; gap: 34px; font-size: 17px; line-height: 1.75; color: var(--color-neutral-800);">
+      <div>
+        <h2 style="margin: 0 0 10px; font-size: 26px; color: var(--color-text);">Who I am</h2>
+        <p style="margin: 0;">This website is operated by Florian Egger. This policy explains how I collect and use information when you visit florian-eg.github.io.</p>
+      </div>
+      <div>
+        <h2 style="margin: 0 0 10px; font-size: 26px; color: var(--color-text);">What data I collect</h2>
+        <p style="margin: 0;">I do not collect personal data directly. However, this site uses two third-party services that may collect data on my behalf.</p>
+      </div>
+      <div>
+        <h2 style="margin: 0 0 10px; font-size: 26px; color: var(--color-text);">Google Analytics</h2>
+        <p style="margin: 0;">I use Google Analytics to understand how visitors use this site. Google Analytics uses cookies to collect anonymous information such as the number of visitors, which pages are viewed, and how long visitors spend on the site. This data is aggregated and anonymous — I cannot identify individual visitors. You can opt out by declining cookies or by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</p>
+      </div>
+      <div>
+        <h2 style="margin: 0 0 10px; font-size: 26px; color: var(--color-text);">Mailchimp (email newsletter)</h2>
+        <p style="margin: 0;">If you choose to subscribe to my newsletter, your email address is collected and stored by Mailchimp (The Rocket Science Group LLC). Mailchimp processes this data in accordance with their <a href="https://www.intuit.com/privacy/statement/" target="_blank" rel="noopener">privacy policy</a>. You can unsubscribe at any time using the link in any email you receive.</p>
+      </div>
+      <div>
+        <h2 style="margin: 0 0 10px; font-size: 26px; color: var(--color-text);">Cookies</h2>
+        <p style="margin: 0;">This site uses cookies only through Google Analytics. These cookies are used to distinguish unique visitors and track sessions. No cookies are set unless you give consent via the cookie banner. You can also manage cookies through your browser settings at any time.</p>
+      </div>
+      <div>
+        <h2 style="margin: 0 0 10px; font-size: 26px; color: var(--color-text);">Your rights</h2>
+        <p style="margin: 0;">Under the GDPR, you have the right to access, correct, or delete any personal data I hold about you (such as your email address if you subscribed to the newsletter). To exercise these rights, contact me at the email address below.</p>
+      </div>
+      <div style="background: var(--color-surface); border-radius: 36px; padding: 34px;">
+        <h2 style="margin: 0 0 10px; font-size: 26px; color: var(--color-text);">Contact</h2>
+        <p style="margin: 0 0 20px;">If you have any questions about this privacy policy, you can reach me here:</p>
+        <a class="btn btn-primary" href="mailto:florian.egger2003@gmail.com" style="font-size: 14px;">florian.egger2003@gmail.com</a>
+      </div>
+    </div>
+  </section>
 
-  <h2>Google Analytics</h2>
-  <p>I use Google Analytics to understand how visitors use this site. Google Analytics uses cookies to collect anonymous information such as the number of visitors, which pages are viewed, and how long visitors spend on the site. This data is aggregated and anonymous — I cannot identify individual visitors. You can opt out by declining cookies or by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</p>
-
-  <h2>Mailchimp (Email Newsletter)</h2>
-  <p>If you choose to subscribe to my newsletter, your email address is collected and stored by Mailchimp (The Rocket Science Group LLC). Mailchimp processes this data in accordance with their <a href="https://www.intuit.com/privacy/statement/" target="_blank" rel="noopener">privacy policy</a>. You can unsubscribe at any time using the link in any email you receive.</p>
-
-  <h2>Cookies</h2>
-  <p>This site uses cookies only through Google Analytics. These cookies are used to distinguish unique visitors and track sessions. No cookies are set unless you give consent via the cookie banner. You can also manage cookies through your browser settings at any time.</p>
-
-  <h2>Your Rights</h2>
-  <p>Under the GDPR, you have the right to access, correct, or delete any personal data I hold about you (such as your email address if you subscribed to the newsletter). To exercise these rights, contact me at the email address below.</p>
-
-  <h2>Contact</h2>
-  <p>If you have any questions about this privacy policy, you can reach me at: florian.egger2003@gmail.com</p>
+  <footer style="border-top: 1px solid var(--color-divider); padding: 40px 32px 56px;">
+    <div style="max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between;">
+      <div style="display: flex; gap: 20px; align-items: center; font-size: 14px;">
+        <a href="index.html" style="color: var(--color-text); text-decoration: none;">Books</a>
+        <a href="ashground.html" style="color: var(--color-text); text-decoration: none;">Ashground</a>
+        <a href="about.html" style="color: var(--color-text); text-decoration: none;">About</a>
+      </div>
+      <p class="text-muted" style="margin: 0; font-size: 13px;">© 2026 Florian Egger · Privacy Policy</p>
+    </div>
+  </footer>
 </div>
-<footer>&copy; 2026 Florian Egger. All rights reserved.</footer>
+
+<div class="cookie-banner" id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:1000;background:var(--color-neutral-900);color:var(--color-neutral-100);padding:16px 32px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);">
+  <p style="margin:0;font-size:14px;">This site uses cookies for analytics. <a href="privacy.html" style="color:var(--color-accent-300);">Learn more</a></p>
+  <button class="btn btn-primary" style="font-size:14px;" onclick="acceptCookies()">Accept</button>
+  <button class="btn" style="font-size:14px;border-color:var(--color-neutral-700);color:var(--color-neutral-100);" onclick="declineCookies()">Decline</button>
+</div>
+<script>
+  (function(){var c=localStorage.getItem('cookie-consent');if(c===null){document.getElementById('cookie-banner').style.display='flex';}else if(c==='accepted'){loadAnalytics();}})();
+  function acceptCookies(){localStorage.setItem('cookie-consent','accepted');document.getElementById('cookie-banner').style.display='none';loadAnalytics();}
+  function declineCookies(){localStorage.setItem('cookie-consent','declined');document.getElementById('cookie-banner').style.display='none';}
+  function loadAnalytics(){var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-GG9DW694C0';document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GG9DW694C0');}
+</script>
 </body>
 </html>
